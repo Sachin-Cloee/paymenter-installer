@@ -1,0 +1,51 @@
+name: Compatibility report
+description: Report a successful or failed clean-server installation
+title: "[Compatibility]: "
+labels: [compatibility]
+body:
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Debian 13
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Server provider or virtualization
+      placeholder: Hetzner Cloud / Proxmox VM / other
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Successful installation
+        - Installation completed with warnings
+        - Installation failed
+    validations:
+      required: true
+  - type: dropdown
+    id: database
+    attributes:
+      label: Database setup
+      options:
+        - Local MariaDB
+        - Remote MariaDB
+    validations:
+      required: true
+  - type: dropdown
+    id: web
+    attributes:
+      label: Web-server setup
+      options:
+        - Automatic Nginx and SSL
+        - Automatic Nginx without SSL
+        - Manual web-server configuration
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes or redacted errors
+      description: Never include credentials or `.env` contents.
