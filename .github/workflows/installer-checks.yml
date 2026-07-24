@@ -1,0 +1,23 @@
+name: Installer checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash syntax
+        run: bash -n install.sh
+
+      - name: Run ShellCheck
+        run: shellcheck --severity=error install.sh

@@ -1,0 +1,66 @@
+name: Bug report
+description: Report a reproducible installer problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remove passwords, tokens, private keys, `.env` contents, and other secrets before submitting logs.
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: Include the distribution and version, for example Ubuntu 24.04.
+      placeholder: Ubuntu 24.04
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Installer command
+      placeholder: sudo ./install.sh install
+    validations:
+      required: true
+  - type: dropdown
+    id: database
+    attributes:
+      label: Database setup
+      options:
+        - Local MariaDB
+        - Remote MariaDB
+    validations:
+      required: true
+  - type: dropdown
+    id: nginx
+    attributes:
+      label: Automatic Nginx configuration
+      options:
+        - Enabled
+        - Disabled
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened?
+      description: Include the exact step that failed and the expected result.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted output
+      description: Paste relevant terminal output after removing all secrets.
+      render: shell
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: I removed all secrets and personal data.
+          required: true
